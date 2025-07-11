@@ -154,7 +154,7 @@ form.addEventListener("submit", async function (e) {
   }
 })
 
-// Ripristino elimina prodotto con conferma alert
+// Ripristino elimina prodotto
 window.deleteProduct = async function (id) {
   if (!confirm("Sei sicuro di voler eliminare questo prodotto?")) return
   clearAlert()
@@ -172,7 +172,7 @@ window.deleteProduct = async function (id) {
   }
 }
 
-// Modifica prodotto (carica dati nel form)
+// Modifica prodotto
 window.editProduct = async function (id) {
   clearAlert()
   try {
@@ -190,7 +190,7 @@ window.editProduct = async function (id) {
   }
 }
 
-// Se arrivo da homepage con ?id=... carico il prodotto da modificare
+// Se arrivo da homepage carico il prodotto da modificare
 window.addEventListener("DOMContentLoaded", () => {
   const params = new URLSearchParams(window.location.search)
   const id = params.get("id")

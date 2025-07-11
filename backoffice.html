@@ -1,183 +1,203 @@
 <!DOCTYPE html>
 <html lang="it">
+  <!-- Head -->
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Crudazon - Backoffice</title>
+    <!-- Bootstrap -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
+    <!-- Link icona -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&family=Inter:wght@400;500;600;700&family=Montserrat:wght@500;700&display=swap"
-      rel="stylesheet"
+      rel="icon"
+      type="image/png"
+      href="https://i.ibb.co/tTM8dGDj/Franky-icona-win.png"
     />
   </head>
+  <!-- Body -->
   <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-black mb-4 sticky-top">
-      <div class="container px-4">
-        <a class="navbar-brand" href="index.html">Crudazon</a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ms-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="index.html">Home</a>
-            </li>
-            <li class="nav-item">
-              <a
-                class="nav-link active"
-                aria-current="page"
-                href="backoffice.html"
-                >Backoffice</a
-              >
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-    <div class="container py-4">
-      <h1
-        class="fw-bold"
-        style="font-family: 'Poppins', sans-serif; letter-spacing: 0.04em"
-      >
-        Backoffice Prodotti
-      </h1>
-      <div id="alert-container"></div>
-      <form id="product-form" class="mb-4">
-        <div class="row g-3">
-          <div class="col-md-6">
-            <label for="name" class="form-label">Nome</label>
-            <input type="text" class="form-control" id="name" required />
-          </div>
-          <div class="col-md-6">
-            <label for="brand" class="form-label">Brand</label>
-            <input type="text" class="form-control" id="brand" required />
-          </div>
-          <div class="col-md-6">
-            <label for="imageUrl" class="form-label">Immagine (URL)</label>
-            <input type="url" class="form-control" id="imageUrl" required />
-          </div>
-          <div class="col-md-3">
-            <label for="price" class="form-label">Prezzo</label>
-            <input
-              type="number"
-              class="form-control"
-              id="price"
-              min="0"
-              step="0.01"
-              required
-            />
-          </div>
-          <div class="col-md-3">
-            <label for="description" class="form-label">Descrizione</label>
-            <input type="text" class="form-control" id="description" />
-          </div>
-        </div>
-        <div class="mt-3">
-          <button type="submit" class="btn btn-primary me-2" id="submit-btn">
-            Salva
-          </button>
-          <button type="button" class="btn btn-danger me-2" id="reset-btn">
-            Reset
-          </button>
+    <!-- Header -->
+    <header>
+      <!-- Navbar -->
+      <nav class="navbar navbar-expand-lg navbar-dark bg-black mb-4 sticky-top">
+        <div class="container px-4">
+          <a class="navbar-brand" href="index.html">Crudazon</a>
           <button
+            class="navbar-toggler"
             type="button"
-            class="btn btn-dark"
-            onclick="window.location.href='index.html'"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
           >
-            Torna alla Home
+            <span class="navbar-toggler-icon"></span>
           </button>
-        </div>
-      </form>
-      <h2>Prodotti esistenti</h2>
-      <div id="products-list" class="row g-4"></div>
-    </div>
-
-    <!-- Modale conferma reset -->
-    <div
-      class="modal fade"
-      id="resetModal"
-      tabindex="-1"
-      aria-labelledby="resetModalLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="resetModalLabel">Conferma reset</h5>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Chiudi"
-            ></button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="index.html">Home</a>
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link active"
+                  aria-current="page"
+                  href="backoffice.html"
+                  >Backoffice</a
+                >
+              </li>
+            </ul>
           </div>
-          <div class="modal-body">Sei sicuro di voler resettare il form?</div>
-          <div class="modal-footer">
+        </div>
+      </nav>
+    </header>
+    <!-- Main -->
+    <main>
+      <div class="container py-4">
+        <h1
+          class="fw-bold"
+          style="font-family: 'Poppins', sans-serif; letter-spacing: 0.04em"
+        >
+          Backoffice Prodotti
+        </h1>
+        <div id="alert-container"></div>
+        <form id="product-form" class="mb-4">
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label for="name" class="form-label">Nome</label>
+              <input type="text" class="form-control" id="name" required />
+            </div>
+            <div class="col-md-6">
+              <label for="brand" class="form-label">Brand</label>
+              <input type="text" class="form-control" id="brand" required />
+            </div>
+            <div class="col-md-6">
+              <label for="imageUrl" class="form-label">Immagine (URL)</label>
+              <input type="url" class="form-control" id="imageUrl" required />
+            </div>
+            <div class="col-md-3">
+              <label for="price" class="form-label">Prezzo</label>
+              <input
+                type="number"
+                class="form-control"
+                id="price"
+                min="0"
+                step="0.01"
+                required
+              />
+            </div>
+            <div class="col-md-3">
+              <label for="description" class="form-label">Descrizione</label>
+              <input type="text" class="form-control" id="description" />
+            </div>
+          </div>
+          <div class="mt-3">
+            <button type="submit" class="btn btn-primary me-2" id="submit-btn">
+              Salva
+            </button>
+            <button type="button" class="btn btn-danger me-2" id="reset-btn">
+              Reset
+            </button>
             <button
               type="button"
-              class="btn btn-secondary"
-              data-bs-dismiss="modal"
+              class="btn btn-dark"
+              onclick="window.location.href='index.html'"
             >
-              Annulla
+              Torna alla Home
             </button>
-            <button type="button" class="btn btn-primary" id="confirmResetBtn">
-              Conferma
-            </button>
+          </div>
+        </form>
+        <h2>Prodotti esistenti</h2>
+        <div id="products-list" class="row g-4"></div>
+      </div>
+
+      <!-- Modale conferma reset -->
+      <div
+        class="modal fade"
+        id="resetModal"
+        tabindex="-1"
+        aria-labelledby="resetModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="resetModalLabel">Conferma reset</h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Chiudi"
+              ></button>
+            </div>
+            <div class="modal-body">Sei sicuro di voler resettare il form?</div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Annulla
+              </button>
+              <button
+                type="button"
+                class="btn btn-primary"
+                id="confirmResetBtn"
+              >
+                Conferma
+              </button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <!-- Modale conferma elimina -->
-    <div
-      class="modal fade"
-      id="deleteModal"
-      tabindex="-1"
-      aria-labelledby="deleteModalLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="deleteModalLabel">
-              Conferma eliminazione
-            </h5>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Chiudi"
-            ></button>
-          </div>
-          <div class="modal-body">
-            Sei sicuro di voler eliminare questo prodotto?
-          </div>
-          <div class="modal-footer">
-            <button
-              type="button"
-              class="btn btn-secondary"
-              data-bs-dismiss="modal"
-            >
-              Annulla
-            </button>
-            <button type="button" class="btn btn-danger" id="confirmDeleteBtn">
-              Elimina
-            </button>
+      <!-- Modale conferma elimina -->
+      <div
+        class="modal fade"
+        id="deleteModal"
+        tabindex="-1"
+        aria-labelledby="deleteModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="deleteModalLabel">
+                Conferma eliminazione
+              </h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Chiudi"
+              ></button>
+            </div>
+            <div class="modal-body">
+              Sei sicuro di voler eliminare questo prodotto?
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Annulla
+              </button>
+              <button
+                type="button"
+                class="btn btn-danger"
+                id="confirmDeleteBtn"
+              >
+                Elimina
+              </button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </main>
     <!-- Footer -->
     <footer
       class="footer mt-auto py-3 bg-black border-top border-primary shadow-sm"
@@ -211,6 +231,7 @@
         </div>
       </div>
     </footer>
+    <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="./scripts/backoffice.js"></script>
   </body>
