@@ -154,14 +154,6 @@ form.addEventListener("submit", async function (e) {
   }
 })
 
-// Ripristino reset form con conferma alert
-resetBtn.addEventListener("click", function () {
-  if (confirm("Sei sicuro di voler resettare il form?")) {
-    resetForm()
-    clearAlert()
-  }
-})
-
 // Ripristino elimina prodotto con conferma alert
 window.deleteProduct = async function (id) {
   if (!confirm("Sei sicuro di voler eliminare questo prodotto?")) return
@@ -206,4 +198,46 @@ window.addEventListener("DOMContentLoaded", () => {
   if (id) {
     window.editProduct(id)
   }
+
+  // Modale reset
+  const resetBtn = document.getElementById("reset-btn")
+  const resetModal = new bootstrap.Modal(document.getElementById("resetModal"))
+  const confirmResetBtn = document.getElementById("confirmResetBtn")
+  resetBtn.addEventListener("click", function (e) {
+    e.preventDefault()
+    resetModal.show()
+  })
+  confirmResetBtn.addEventListener("click", function () {
+    resetForm()
+    resetModal.hide()
+  })
+
+  // Modale elimina
+  let deleteId = null
+  const deleteModal = new bootstrap.Modal(
+    document.getElementById("deleteModal")
+  )
+  const confirmDeleteBtn = document.getElementById("confirmDeleteBtn")
+  window.deleteProduct = function (id) {
+    deleteId = id
+    deleteModal.show()
+  }
+  confirmDeleteBtn.addEventListener("click", async function () {
+    if (!deleteId) return
+    clearAlert()
+    try {
+      const res = await fetch(API_URL + deleteId, {
+        method: "DELETE",
+        headers: { Authorization: `Bearer ${TOKEN}` },
+      })
+      if (!res.ok) throw new Error("Errore nell'eliminazione del prodotto")
+      showAlert("Prodotto eliminato con successo!", "success")
+      loadProducts()
+      resetForm()
+    } catch (err) {
+      showAlert(err.message)
+    }
+    deleteId = null
+    deleteModal.hide()
+  })
 })
